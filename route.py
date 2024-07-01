@@ -12,13 +12,11 @@ from models import *
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 from flask_login import LoginManager
-import bcrypt
 from flask import abort
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import timedelta
-import bleach
 
 
 
@@ -283,7 +281,7 @@ def like_post(post_id):
     post = Post.query.get_or_404(post_id)
     post.likes += 1
     db.session.commit()
-    flash('Post liked!', 'success')
+    #flash('Post liked!', 'success')
     return redirect(request.referrer)
 
 @app.route('/post/delete/<int:post_id>', methods=['GET','POST'])
@@ -395,7 +393,7 @@ def full_post(post_id,limit=2):
         db.session.add(comment)
         db.session.commit()
         comment_form.content.data=''
-        flash('Comment added!', 'success')
+        #flash('Comment added!', 'success')
         return render_template('full_post.html',tags=unique_tags, post=post ,comment_form = comment_form , form = forms,popular_posts = popular_posts)
     
     return render_template('full_post.html', tags=unique_tags,post=post ,comment_form = comment_form , form = forms,popular_posts = popular_posts )
