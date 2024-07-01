@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>commail</title>
+    <link rel="stylesheet" href="/static/login.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <a
+        href="{{ url_for('index') }}"
+        type="button"
+        class="close"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </a>
+      {# Flashing message start here #} {% with messages =
+      get_flashed_messages(with_categories=true) %} {% if messages %}
+      <div class="flashes">
+        {% for category, message in messages %}
+        <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %} {# Flashing message ends here #}
+      <form method="post">
+        {{ form.hidden_tag() }}
+        <h2>Confirmation Mail</h2>
+        <div class="input-field">
+          {{ form.email }}
+          <label>Enter your email</label>
+        </div>
+        <div>{{ form.submit }}</div>
+      </form>
+    </div>
+  </body>
+</html>

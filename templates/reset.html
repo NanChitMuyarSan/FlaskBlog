@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/reset.css" />
+    <title>Forgot password</title>
+    
+</head>
+<body>
+  <div class="wrapper">
+    <a href="{{ url_for('index') }}" type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+     
+   </a>
+    <form method="post" action="#">
+      <h2>Reset Your Password</h2>
+            
+      <div class="input-field">
+        <input type="password" name="npassword" required>
+        <span></span>
+        <label>New Password</label>
+        <i class="eye-icon" id="togglePassword"></i>
+      </div>
+            
+      <div class="input-field">
+        <input type="password" name="cpassword" required>
+        <span></span>
+        <label>Comfirm Password</label>
+        <i class="eye-icon" id="togglePassword"></i>
+      </div>
+          
+      <input name="submit" type="submit" value="Update">
+
+      <div class="Signup_link">
+        Go Back To <a href="{{ url_for('login') }}">Login</a>
+              
+            
+            
+    </form>
+  </div>
+  <!-- <script>
+    // Add this to your existing script.js
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordField = document.getElementById('password');
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+
+        // Toggle the eye icon (optional)
+        this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
+    });
+});
+
+  </script>
+       -->
+</body>
+</html>

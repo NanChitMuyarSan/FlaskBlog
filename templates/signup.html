@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign up</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/static/signup.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <a href="{{ url_for('index') }}" type="button" class="close" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+        
+      </a>
+      <form method="post" action="#">
+        
+        {{ form.hidden_tag() }}
+
+        <h2>Register</h2>
+          <div class="input-field">
+            {{ form.username }}
+          <span></span>
+          <label>Name</label>
+        </div>
+        <div class="input-field">
+          {{ form.email }}
+          <span></span>
+          <label>Email</label>
+        </div>
+        <div class="input-field">
+          {{ form.password }}
+          <span></span>
+          <label>Password</label>
+          <i class="eye-icon" id="togglePassword"></i>
+        </div>
+        <div class="input-field">
+          {{ form.confirm_password }}
+          <span></span>
+          <label>Comfirm Password</label>
+          <i class="eye-icon" id="togglePassword"></i>
+        </div>
+        
+
+        {{ form.submit }}
+          <div class="Signup_link">
+            Have An Account? <a href="{{ url_for('login') }}">Login Here</a>
+          </div>
+        
+      </form>
+      <!-- <script>
+        // Add this to your existing script.js
+    
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordField = document.getElementById('password');
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+    
+            // Toggle the eye icon (optional)
+            this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
+        });
+    });
+    
+      </script> -->
+  </body>
+</html>

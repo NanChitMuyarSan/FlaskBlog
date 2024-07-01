@@ -1,0 +1,139 @@
+body {
+  background: linear-gradient(to left, #33ccff 0%, #ff99cc 100%);
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  max-width: 800px;
+
+  margin: auto;
+}
+#edit {
+  width: 50%;
+}
+.dynamic-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dynamic-field input {
+  flex: 1;
+}
+
+.dynamic-field button {
+  background: #007bff;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.button2 {
+  background-color: #007bff;
+  border: 1px solid #fff;
+  padding: 8px 20px;
+  border-radius: 0.375rem;
+  text-align: center;
+  transition: 0.2s ease;
+}
+
+.button2:hover {
+  background-color: #0066aa;
+}
+
+.button4 {
+  border: 1px solid #fff;
+  padding: 8px 20px;
+  border-radius: 0.375rem;
+  text-align: center;
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 150vh;
+  background: rgb(240, 240, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-wrapper {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.input-wrapper input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  height: 50px;
+  width: 100%;
+  font-size: 18px;
+  outline: none;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+.input-wrapper label span {
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  font-size: 18px;
+  pointer-events: none;
+  transition: ease-out 0.1s;
+}
+
+.input-wrapper label::after {
+  content: "";
+  background: var(--focus-color);
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: 0.2s;
+  transform: translateX(-100%);
+}
+
+.input-wrapper input:focus + label span,
+.input-wrapper input:valid + label span {
+  color: var(--focus-color);
+  font-size: 12px;
+  transform-origin: top left;
+  transform: translateY(-30px);
+}
+
+.input-wrapper input:focus + label::after {
+  transform: translateX(0);
+}
+
+.input-wrapper {
+  width: 80%; /* Ensures the wrapper takes the full width */
+  margin-bottom: 1rem;
+}
+
+.input-wrapper input {
+  width: 80%; /* Ensures the input takes the full width of the wrapper */
+}

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="nav-link" href="{{ url_for('home') }}">
+      <img class="image" src="/static/image/logo.png" alt="Logo"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="d-flex" method="POST">
+        {{ form.hidden_tag() }}
+        <input
+          class="form-control form-control-md w-100 me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          name="search"
+        />
+        <button class="btn btn-outline-success" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="gap: 10px">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{{ url_for('home') }}"
+            ><i class="fa-solid fa-house"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('post') }}"
+            >Write <i class="fa-regular fa-pen-to-square"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{{ url_for('profile',user_id=current_user.id) }}"
+            ><i class="fa-solid fa-user"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

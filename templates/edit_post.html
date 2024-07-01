@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Upload</title>
+    <!-- Include TinyMCE -->
+    <script
+      src="https://cdn.tiny.cloud/1/zilu7t2n4gjp9fznb6ksnpq3q5qchndgcx8nmsqtsvevoe6l/tinymce/7/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/static/upload.css" />
+    <link rel="stylesheet" href="/static/topnav.css" />
+    <script>
+      tinymce.init({
+        selector: "#textDescription",
+        menubar: true,
+        plugins:
+          "advlist autolink lists link image charmap print preview hr anchor pagebreak code",
+        toolbar:
+          "undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
+        setup: function (editor) {
+          editor.on("init", function () {
+            this.getContainer().style.transition =
+              "border-color 0.15s ease-in-out";
+          });
+          editor.on("focus", function () {
+            this.getContainer().style.borderColor = "#80BDFF";
+          });
+          editor.on("blur", function () {
+            this.getContainer().style.borderColor = "";
+          });
+        },
+      });
+      function addField() {
+        const container = document.getElementById("dynamicFieldsContainer");
+        const fieldWrapper = document.createElement("div");
+        fieldWrapper.className = "dynamic-field mb-3 d-flex align-items-center";
+        const input = document.createElement("input");
+        input.type = "text";
+        input.name = "dynamicFields[]";
+        input.className = "form-control me-2";
+        input.placeholder = "Additional Information";
+        const removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.className =
+          "btn btn-danger d-flex align-items-center justify-content-center";
+        removeButton.innerHTML = '<i class="fas fa-times"></i>';
+        removeButton.style.minWidth = "40px"; // Ensure buttons have the same size
+        removeButton.onclick = function () {
+          container.removeChild(fieldWrapper);
+        };
+        fieldWrapper.appendChild(input);
+        fieldWrapper.appendChild(removeButton);
+        container.appendChild(fieldWrapper);
+      }
+    </script>
+  </head>
+  <body>
+    {% include 'topnav.html' %}
+    <div class="container" id="edit">
+      <h2>Edit a Post</h2>
+      <form method="POST">
+        <div class="form-wrapper">
+          <div class="input-wrapper">
+            <input type="text" name="title" value="{{post.title}}" />
+            <label><span>Title</span></label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="textDescription" class="form-label"></label>
+          <textarea
+            rows="4"
+            cols="50"
+            id="textDescription"
+            name="content"
+            style="font-style: italic"
+            style="font-weight: 100"
+          >
+          {{post.content | safe}}
+        
+        </textarea
+          >
+        </div>
+        <div
+          style="
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0px 12px 0px;
+          "
+        >
+          <label for="dynamicFields" class="form-label"
+            ><i class="fa-solid fa-tag"></i>Tags</label
+          >
+        </div>
+        <div id="dynamicFieldsContainer" class="mb-3">
+          <div class="dynamic-field mb-3 d-flex align-items-center">
+            <input
+              type="text"
+              class="form-control me-2"
+              name="dynamicFields[]"
+              value="{{post.tag}}"
+            />
+            <button
+              type="button"
+              class="btn btn-primary d-flex align-items-center justify-content-center"
+              onclick="addField()"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="button2">Update Post</button>
+        <button type="reset" class="button4">
+          <a href="{{ url_for('home') }}">Cancel</a>
+        </button>
+      </form>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>

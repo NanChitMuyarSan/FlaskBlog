@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Upload</title>
+    <!-- Include TinyMCE -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.quilljs.com/1.3.7/quill.snow.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="static/post.css" />
+    <link rel="stylesheet" href="static/home.css" />
+    <link rel="stylesheet" href="static/topnav.css" />
+
+    <script>
+      ClassicEditor.create(document.querySelector("#textDescription")).catch(
+        (error) => {
+          console.error(error);
+        }
+      );
+    </script>
+    <script>
+      var quill = new Quill("#textDescription", {
+        theme: "snow",
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#textDescription").summernote();
+      });
+    </script>
+  </head>
+  <body>
+    {% include 'topnav.html' %}
+    <div class="container">
+      <h2>Upload Blog</h2>
+      <form method="POST">
+        <div class="form-wrapper">
+          <div class="input-wrapper">
+            <input type="text" name="title" required />
+            <label><span>Title</span></label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="textDescription" class="form-label"></label>
+          <textarea
+            rows="4"
+            cols="50"
+            id="textDescription"
+            name="content"
+            placeholder="Write content here. . ."
+            style="font-style: italic"
+            style="font-weight: 100"
+          ></textarea>
+        </div>
+        <div
+          style="
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0px 12px 0px;
+          "
+        >
+          <label for="dynamicFields" class="form-label"
+            ><i class="fa-solid fa-tag"></i>Tags</label
+          >
+        </div>
+        <div id="dynamicFieldsContainer" class="mb-3">
+          <div class="dynamic-field mb-3 d-flex align-items-center">
+            <input
+              type="text"
+              class="form-control me-2"
+              name="dynamicFields[]"
+              placeholder="Additional Information"
+            />
+            <button
+              type="button"
+              class="btn btn-primary d-flex align-items-center justify-content-center"
+              onclick="addField()"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="button2">Upload Post</button>
+        <button type="reset" class="button4">
+          <a
+            href="{{ url_for('home') }}"
+            style="text-decoration: none; color: black"
+            >Cancel</a
+          >
+        </button>
+      </form>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>

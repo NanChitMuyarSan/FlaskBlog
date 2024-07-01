@@ -1,0 +1,81 @@
+* {
+  color: #0c0b0b;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  z-index: 1;
+}
+
+.container-fluid {
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  background: #ccc;
+  font-weight: 200px;
+  z-index: 2;
+  margin: 5px;
+} 
+
+/* Navbar Styles */
+.navbar {
+  position: sticky;
+  top: 0;
+  height: auto; 5
+  padding-top: 0px;
+  padding-bottom: 0px;
+  z-index: 2;
+}
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000; 
+} */
+
+.navbar-nav .nav-link {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.navbar-brand,
+.navbar-toggler {
+  height: auto; /* Let the content determine the height */
+  line-height: 1.5; /* Adjust line-height for vertical alignment */
+}
+
+/* Flexbox Styles */
+.d-flex {
+  padding-left: 20px;
+  background-color: #ccc;
+}
+
+/* Text Center Styles */
+.text-center {
+  background: linear-gradient(to left, #ccc 0%, #ccc 100%);
+}
+
+/* Row Anchor Styles */
+.row a {
+  border-radius: 15%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+/* Image Styles */
+.image {
+  height: 80px;
+  width: 100px;
+}
+/* Navbar Content Styles */
+#navbarSupportedContent {
+  background: linear-gradient(to left, #ccc 0%, #ccc 100%);
+}

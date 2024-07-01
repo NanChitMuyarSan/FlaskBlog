@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Comment on Post</title>
+  </head>
+  <body>
+    <h1>Comment on Post</h1>
+    <form method="POST" action="">
+      {{ comment_form.hidden_tag() }}
+      <p>
+        {{ comment_form.content.label }}<br />
+        {{ comment_form.content(cols=50, rows=10) }}
+      </p>
+      <p>{{ comment_form.submit() }}</p>
+    </form>
+  </body>
+</html>

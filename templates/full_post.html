@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="/static/home.css">
+  <link rel="stylesheet" href="/static/topnav.css" />
+ 
+</head>
+<body>
+ 
+  {% include 'topnav.html' %}
+<div>
+
+  <div class="container" >
+    <div class="row">
+      <div class="col-sm-8">
+        <!-- Posts container -->
+        <div id="posts-container">
+          <a href="{{ url_for('home') }}" style="text-decoration: none;">
+            <button class="back-button" onclick="goBack()">
+              <!-- Icon can be an image or font icon -->
+              <i class="fa fa-arrow-left "> </i>
+              <!-- Alternatively, use a font icon library like Font Awesome -->
+              <!-- <i class="fa fa-arrow-left"></i> -->
+                Back
+          </button>
+          </a>
+          
+          <!-- Repeated card content will be dynamically added here -->
+          <div class="card">
+            <div class="card-header">
+                <div class="profile-image">
+                  <a
+                  class="nav-link"
+                  href="{{ url_for('profile',user_id=post.user_id) }}"
+                  ><img
+                    src="{{ url_for('static', filename='/photo/user_profile/'+post.author.profile_picture) }}"
+                    width="60"
+                    height="60"
+                    alt=""
+                       /></a>
+                
+                <div style="width: 300px">
+                    <p id="name">
+                      <a
+                      class="nav-link"
+                      href="{{ url_for('profile',user_id=post.user_id) }}"
+                      >{{post.author.username}}</a
+                    >
+                    </p>
+                  
+                  </br>
+                    <p class="text-muted mb-0"><i class="fa-regular fa-clock"></i>  {{post.created_date.strftime('%d-%m-%Y %H:%M')}}</p>
+                 </div>
+           
+               </div>
+               
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text" id="card-description">{{post.content | safe}}</p>   
+            <div class="tags-container">
+              <ul class="list-group list-group-horizontal">
+                <i class="fas fa-tag"></i>
+                <a href="{{ url_for('home_tag',tag=post.tag ) }}" class="tag">{{post.tag}} </a>
+              </ul>
+              </div>
+          </div>
+          {# Flashing message start here #} {% with messages =
+            get_flashed_messages(with_categories=true) %} {% if messages %}
+            <div class="flashes">
+              {% for category, message in messages %}
+              <div class="{{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+            {% endif %} {% endwith %} {# Flashing message ends here #}
+              <form
+              action="{{ url_for('like_post', post_id=post.id) }}"
+              method="post"
+              style="display: inline"
+            >
+            <div class="card-end" style="border-bottom: #958787 solid 1px;">
+              <button type="submit" class="btn btn-light heart-button" onclick="toggleHeart(this)">
+                <i class="far fa-heart"></i>
+                <span>{{ post.likes }}</span>
+              </button>
+               </form>
+                <div class="timeline-comment-box">
+               </div>
+                    <div class="input">
+                        
+                           
+                      <form method="post" style="display: inline">
+                              <!-- <input type="text" class="form-control rounded-corner" placeholder="Write a comment..."> -->
+                            
+                              {{ comment_form.hidden_tag() }}
+                            <div class="form-group">
+                              {{ comment_form.content.label }}<br />
+                              {{ comment_form.content(cols=50, rows=5) }}
+                            </div>
+                            </p>
+
+                            <p>{{ comment_form.submit() }}</p>
+                            </form>
+                    </div>
+                               
+                              </br>
+                              <ul>
+                              <li>
+                                {% for comment in post.comments %}
+                               
+                                  <a
+                                    class="nav-link"
+                                    href="{{ url_for('profile',user_id=post.user_id) }}"
+                                    ><img
+                                      src="{{ url_for('static', filename='/photo/user_profile/'+comment.author.profile_picture) }}"
+                                      width="25"
+                                      height="25"
+                                      alt=""
+                                    />{{ comment.author.username }}</a>
+                                  {{ comment.content }}
+                         
+                                {% endfor %}
+                              </li>
+                              </ul> 
+        </div>
+      </div>
+      </div>
+    </div>    
+    {% include 'sidenav.html' %}
+  </div>
+</div>
+  
+  {% include 'footer.html' %}
+</body>
+</html>
