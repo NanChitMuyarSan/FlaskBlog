@@ -169,7 +169,7 @@ def home(limit=2):
     per_page = 10  # Number of posts per page
     post = get_posts(page, per_page)  # Assuming you have a function to get paginated posts
     
-    unique_tags = list(set(tag for tag, in Post.query.with_entities(Post.tag).distinct()))
+    unique_tags = list(set(tag for tag, in Post.query.with_entities(Post.tag).distinct().limit(15)))
 
      # get 5 popular post by like count
     popular_posts = Post.query.order_by(Post.likes.desc()).limit(limit).all()
