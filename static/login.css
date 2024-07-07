@@ -65,7 +65,7 @@ h2 {
   border: none;
   outline: none;
   font-size: 16px;
-  color: #fff;
+  color: #484646;
 }
 .input-field input:focus~label,
 .input-field input:valid~label {
