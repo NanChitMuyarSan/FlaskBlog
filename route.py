@@ -336,7 +336,7 @@ def confirm_email(token):
             db.session.commit()
             # return render_template('test.html',existing_user = existing_user)
             return redirect(url_for('login'))
-    return render_template('resetpw.html',reset_form = reset_form)
+    return render_template('reset.html',reset_form = reset_form)
 
 
 
