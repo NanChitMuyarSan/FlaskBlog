@@ -229,10 +229,14 @@ def search_result(limit=2):
 
 #index route                                         
 @app.route('/')
-def index():
+def frontpage():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
-    return render_template('index.html')
+    return render_template('frontpage.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 @app.route('/post',methods=['GET', 'POST'])
@@ -301,7 +305,7 @@ def login():
 @app.route("/logout")
 def logout():
     logout_user()
-    return redirect(url_for("index"))
+    return redirect(url_for("frontpage"))
 
 #comfirmationemail route
 @app.route('/commail',methods=['GET', 'POST'])

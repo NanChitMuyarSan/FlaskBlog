@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aboutus</title>
+     
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css "rel="stylesheet"> 
+  
+   
+   
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> 
+   
+   
+ 
+</head>
+<style>
+   body{
+   background-size: 1300px;
+   background-repeat: no-repeat;
+  background-image: url(/static/image/aboutus.jpg);
+   font-size: small;
+  color: #ffffff;
+overflow-y:auto;
+
+color: rgb(71, 71, 72);
+  }
+
+
+
+ 
+ 
+.navbar-nav{
+
+
+background-color:none;
+
+
+}
+.navbar-nav li a{
+border-radius:20px;
+transition:all 0.5s ease-in;
+font-size: large;
+
+}
+.navbar-nav li.active a{
+background-color:rgb(255, 98, 0);
+color:#fff !important;
+}
+
+
+@media(max-width:768px){
+section:first-of-type{
+  padding-top:20px;
+}
+.navbar-nav{
+  
+  padding:0px;
+  
+}
+
+.navbar-nav li a{
+
+ padding-left:20px !important;
+}
+}
+
+@media(min-width:768px){
+section:first-of-type{
+  padding-top:100px;
+}
+
+.navbar-theme{
+
+background:none;
+}
+.navbar-brand{
+  display:none;
+}
+.navbar-nav li a{
+color:#ffffff;
+margin:0;
+padding:10px 20px !important;
+}
+
+
+}
+ 
+</style>
+<body>
+    
+ 
+
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light navbar-theme">
+    <img class="image" src="/static/image/logo.png" width="100" height="60" alt="Logo" />
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-md-center" id="main-menu">
+    <ul class="navbar-nav text-uppercase mt-3 ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('frontpage') }}">Home</a>
+          </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('signup') }}">Sign UP</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('login') }}">Sign In</a>
+      </li> 
+    </ul>
+  </div>
+</nav>
+		<section data-section-name="home" class="parallax-window" data-parallax="scroll" data-image-src="/static/image/aboutus.jpg" >
+      
+ 
+				 
+  
+    </section>
+
+ 
+ 
+
+		
+    
+    
+  
+</body>
+</html>
+
+
+
+
+ 
+ 

@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
 * {
+   
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
+  
 }
 body {
   display: flex;
@@ -12,24 +14,30 @@ body {
   min-height: 100vh;
   width: 100%;
   padding: 0 10px;
+ background-image: url(/static/image/img.jpg);
+	 background-size: 1500px;
+   background-repeat: no-repeat;
 }
+
+ 
+
+ 
+
 body::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("image/bg.jpg"), #000;
-  background-position: center;
-  background-size: cover;
 }
+
 .wrapper {
   position: relative;
   width: 400px;
   border-radius: 8px;
   padding: 30px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(8px);
+  border: 1px solid rgba(181, 176, 176, 0.5);
+  backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(8px);
 }
 form {
@@ -39,7 +47,7 @@ form {
 h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #fff;
+  color: #484646;
 }
 .input-field {
   position: relative;
@@ -51,7 +59,7 @@ h2 {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  color: #fff;
+  color: #484646;
   font-size: 16px;
   pointer-events: none;
   transition: 0.15s ease;
@@ -63,7 +71,7 @@ h2 {
   border: none;
   outline: none;
   font-size: 16px;
-  color: #fff;
+  color: #484646;
 }
 .input-field input:focus~label,
 .input-field input:valid~label {
@@ -107,11 +115,11 @@ input[type="submit"]{
   
   }
   input[type="submit"]:hover{
-    background: #2691d9;
+    background: #dca47c;
     transition: .5s;
   }
   .Signup_link{
-    color: #fff;
+    color: #484646;
     padding: 20px;
   }
   
