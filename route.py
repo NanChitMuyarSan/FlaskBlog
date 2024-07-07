@@ -235,19 +235,6 @@ def index():
     return render_template('index.html')
 
 
-# #nav route
-# @app.route('/nav',methods=['GET', 'POST'])
-# @login_required
-# def nav():
-
-#     forms=SearchForm()
-#     query = forms.search.data
-#     if forms.validate_on_submit():
-#         search_results = Post.query.filter(Post.title.ilike(f'%{query}%')).all()
-#         return render_template('search_results.html' , search_results =search_results, form = forms) # or what you wanto
-#     return render_template('nav.html',form=forms)
-
-
 @app.route('/post',methods=['GET', 'POST'])
 @login_required
 def post():
@@ -257,8 +244,7 @@ def post():
         title = request.form.get('title')
         content = request.form.get('content')
         meta_data = ' '.join(content.split()[:10])
-        # sentences = re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s', content)
-        # meta_data = ' '.join(sentences[:1])  # Join the first two sentences into a single string
+        
     
         tag = request.form.get('dynamicFields[]')
         new_post = Post(title=title,content=content,tag=tag,author=author, meta=meta_data)
@@ -377,7 +363,7 @@ def signup():
 @login_required
 def full_post(post_id,limit=2):
     post = Post.query.get_or_404(post_id)
-    unique_tags = list(set(tag for tag, in Post.query.with_entities(Post.tag).distinct()))
+    unique_tags = list(set(tag for tag, in Post.query.with_entities(Post.tag).distinct().limit(15)))
 
      # get 5 popular post by like count
     popular_posts = Post.query.order_by(Post.likes.desc()).limit(limit).all()
@@ -430,6 +416,7 @@ def profile_edit():
     form = PictureUpdate()
     bio = current_user.bio
     if request.method == 'POST':
+        username=request.form.get('username')
         bio  = request.form.get('bio')
         uploaded_file = request.files['file']
         if uploaded_file:
@@ -440,9 +427,7 @@ def profile_edit():
         else:
             user.profile_picture = current_user.profile_picture
         user.bio = bio
+        user.username=username
         db.session.commit()
         return redirect(url_for('profile',user_id=current_user.id))
-    
-    
     return render_template('profile_edit.html',form=form,user=user,picture_url=picture_url)
-

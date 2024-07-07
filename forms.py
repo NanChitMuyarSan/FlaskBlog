@@ -9,6 +9,7 @@ from wtforms.validators import DataRequired, Email, Length, EqualTo,Optional
 class ProfileForm(FlaskForm):
   profile_picture = FileField('Profile Picture', validators=[DataRequired()])
   submit = SubmitField('Upload')
+
 # Define a form for user Post
 class PostForm(FlaskForm):
   title = StringField('Title', validators=[DataRequired(), Length(min=3, max=50)])  
@@ -50,7 +51,6 @@ class SearchForm(FlaskForm):
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Submit')
-
 
 class DateFilterForm(FlaskForm):
     created_date = DateField('Created Date')
