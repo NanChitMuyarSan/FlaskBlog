@@ -280,7 +280,7 @@ def delete_post(post_id):
     post = Post.query.get_or_404(post_id)
     db.session.delete(post)
     db.session.commit()
-    flash('Post deleted!', 'success')
+    #flash('Post deleted!', 'success')
     return redirect(url_for('profile',user_id=current_user.id))
 
 #login route
