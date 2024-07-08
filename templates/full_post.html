@@ -11,7 +11,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 
-  <link rel="stylesheet" href="/static/home.css">
+  <link rel="stylesheet" href="/static/full_post.css">
   <link rel="stylesheet" href="/static/topnav.css" />
  
 </head>
@@ -36,6 +36,7 @@
           </a>
           
           <!-- Repeated card content will be dynamically added here -->
+  
           <div class="card">
             <div class="card-header">
                 <div class="profile-image">
@@ -67,7 +68,7 @@
           </div>
           <div class="card-body">
             <h5 class="card-title">{{post.title}}</h5>
-            <p class="card-text" id="card-description">{{post.content | safe}}</p>   
+            <p >{{post.content}}</p>   
             <div class="tags-container">
               <ul class="list-group list-group-horizontal">
                 <i class="fas fa-tag"></i>
@@ -133,6 +134,7 @@
                               </li>
                               </ul> 
         </div>
+ 
       </div>
       </div>
     </div>    
