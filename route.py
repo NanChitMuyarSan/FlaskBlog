@@ -324,19 +324,19 @@ def commail():
 #rest password route
 @app.route('/resetpw/<token>',methods=['GET', 'POST'])
 def confirm_email(token):
-    reset_form = resetpwForm()
+    form = resetpwForm()
     email = s.loads(token, salt='email-confirm', max_age=3600)
     # existing_user = User.query.filter_by(email=email).first()
-    if reset_form.validate_on_submit():
-        npass = reset_form.npass.data
-        cpass = reset_form.cpass.data
+    if form.validate_on_submit():
+        npass = form.npass.data
+        cpass = form.cpass.data
         if npass==cpass:
             existing_user = User.query.filter_by(email=email).first()
             existing_user.password = npass
             db.session.commit()
             # return render_template('test.html',existing_user = existing_user)
             return redirect(url_for('login'))
-    return render_template('reset.html',reset_form = reset_form)
+    return render_template('reset.html',form = form)
 
 
 

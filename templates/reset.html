@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/reset.css" />
+    <link rel="stylesheet" href="/static/reset.css" />
     <title>Forgot password</title>
     
 </head>
@@ -13,29 +13,30 @@
       <span aria-hidden="true">&times;</span>
      
    </a>
-    <form method="post" action="#">
+   <form method="post">
+    {{ form.hidden_tag() }}
       <h2>Reset Your Password</h2>
             
       <div class="input-field">
-        <input type="password" name="npassword" required>
+        {{ form.npass }}
         <span></span>
         <label>New Password</label>
         <i class="eye-icon" id="togglePassword"></i>
       </div>
             
       <div class="input-field">
-        <input type="password" name="cpassword" required>
+        {{ form.cpass }}
         <span></span>
         <label>Comfirm Password</label>
         <i class="eye-icon" id="togglePassword"></i>
       </div>
           
-      <input name="submit" type="submit" value="Update">
+      <div>{{ form.submit }}</div>
 
       <div class="Signup_link">
         Go Back To <a href="{{ url_for('login') }}">Login</a>
               
-            
+      </div>      
             
     </form>
   </div>
