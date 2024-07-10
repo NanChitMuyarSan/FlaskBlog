@@ -18,53 +18,7 @@
   </head>
   <body>
     {% include 'topnav.html' %}
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <img class="image" src="/static/image/logo.png" alt="Logo" />
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          
-          <form class="d-flex" method="POST">
-            {{ form.hidden_tag() }}
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              name="search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </form>
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="gap: 10px">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="{{ url_for('home') }}"
-                ><i class="fa-solid fa-house"></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('post') }}"
-                >Write <i class="fa-regular fa-pen-to-square"></i
-              ></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav> -->
+    
     <div class="container">
       <div class="row">
         <div class="col-sm-8">
@@ -157,13 +111,14 @@
             ></div>
             {% endfor %}
           </div>
+          <!-- Pagination controls -->
           <nav aria-label="Page navigation" class="mt-4">
-              <ul class="pagination justify-content-center" style="gap: 10px">
+            <ul class="pagination justify-content-center" style="gap: 10px">
               <li
                 class="page-item {% if not post.has_prev %}disabled{% endif %}"
               >
-                {% if post.has_prev %}
-                <a class="page-link" href="?page={{ post.prev_num }}"
+                {% if user_posts.has_prev %}
+                <a class="page-link" href="?page={{ user_posts.prev_num }}"
                   >Previous</a
                 >
                 {% else %}
@@ -171,11 +126,14 @@
                 {% endif %}
               </li>
 
-              {% for page_num in post.iter_pages() %} {% if page_num %}
+              {% for page_num in user_posts.iter_pages() %} {% if page_num %}
               <li
-                class="page-item {% if post.page == page_num %}active{% endif %}"
+                class="page-item {% if user_posts.page == page_num %}active{% endif %}"
               >
-                <a class="page-link" href="?page={{ page_num }}" style="background-color: #445e91"
+                <a
+                  class="page-link"
+                  href="?page={{ page_num }}"
+                  style="background-color: #445e91"
                   >{{ page_num }}</a
                 >
               </li>
@@ -186,10 +144,10 @@
               {% endif %} {% endfor %}
 
               <li
-                class="page-item {% if not post.has_next %}disabled{% endif %}"
+                class="page-item {% if not user_posts.has_next %}disabled{% endif %}"
               >
-                {% if post.has_next %}
-                <a class="page-link" href="?page={{ post.next_num }}">Next</a>
+                {% if user_posts.has_next %}
+                <a class="page-link" href="?page={{ user_posts.next_num }}">Next</a>
                 {% else %}
                 <span class="page-link">Next</span>
                 {% endif %}

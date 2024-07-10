@@ -95,7 +95,7 @@ def profile(user_id,limit=2):
     if forms.validate_on_submit():
          search_results = Post.query.filter(Post.title.ilike(f'%{query}%')).all()
          return render_template('search_results.html' ,post=post, search_results =search_results ,
-                                form = forms ,tags=unique_tags,popular_posts=popular_posts)
+                                form = forms ,tags=unique_tags,popular_posts=popular_posts,user_posts=user_posts)
     
     
 
@@ -166,7 +166,7 @@ def home(limit=2):
     # post=Post()
     # tags = post.tag
     page = request.args.get('page', 1, type=int)
-    per_page = 10  # Number of posts per page
+    per_page = 5  # Number of posts per page
     post = get_posts(page, per_page)  # Assuming you have a function to get paginated posts
     
     unique_tags = list(set(tag for tag, in Post.query.with_entities(Post.tag).distinct().limit(15)))
@@ -247,7 +247,7 @@ def post():
         author=current_user
         title = request.form.get('title')
         content = request.form.get('content')
-        meta_data = ' '.join(content.split()[:10])
+        meta_data = ' '.join(content.split()[:100])
         
     
         tag = request.form.get('dynamicFields[]')

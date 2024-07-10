@@ -86,8 +86,8 @@
                   href="{{ url_for('full_post',post_id=post.id) }}"
                 >
                   <h5 class="card-title">{{post.title}}</h5>
-                  <p class="card-text" id="card-description">
-                    {{post.meta | safe}}
+                  <p>
+                    {{post.meta}}
                   </p>
                   <div class="tags-container">
                     <ul class="list-group list-group-horizontal">
